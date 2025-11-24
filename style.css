@@ -8,7 +8,7 @@ Tags: block-patterns, block-styles, custom-colors, custom-logo, custom-menu, edi
 Requires at least: 6.7
 Tested up to: 6.7
 Requires PHP: 7.2
-Version: 1.0.21
+Version: 1.0.22
 License: GNU General Public License v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: rebecca-mercier-theme
@@ -289,19 +289,22 @@ p:last-child {
 }
 
 .site-header .wp-block-navigation__responsive-container.is-menu-open {
-	background: rgba(27, 21, 18, 0.98);
+	background: rgba(232, 222, 210, 0.98);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
 	position: fixed;
 	top: 0;
 	right: 0;
 	bottom: 0;
-	width: 80vw;
-	max-width: 400px;
+	width: 70vw;
+	max-width: 320px;
 	height: 100vh;
 	overflow-y: auto;
 	transform: translateX(0);
 	transition: transform 0.3s ease;
 	box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
 	z-index: 9999;
+	border: none;
 }
 
 /* Add backdrop overlay when menu is open */
@@ -466,9 +469,9 @@ p:last-child {
 	overflow: hidden;
 	border-radius: var(--radius-large);
 	padding: var(--space-large);
-	background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 241, 234, 0.85));
-	box-shadow: var(--card-shadow-hover), inset 0 1px 0 rgba(255, 255, 255, 0.6);
-	border: var(--card-border);
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 241, 234, 0.92) 50%, rgba(255, 255, 255, 0.95) 100%);
+	box-shadow: var(--card-shadow-hover), inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -1px 0 rgba(176, 116, 85, 0.1);
+	border: 2px solid rgba(176, 116, 85, 0.2);
 	margin-top: var(--space-medium);
 }
 
@@ -480,7 +483,7 @@ p:last-child {
 	background-size: 140px 140px;
 	background-position: center;
 	background-repeat: repeat;
-	opacity: 0.15;
+	opacity: 0.12;
 	pointer-events: none;
 	z-index: 0;
 }
@@ -1152,7 +1155,7 @@ p:last-child {
 
 	.site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item {
 		margin: 0;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		border-bottom: 1px solid rgba(74, 63, 53, 0.15);
 	}
 
 	.site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item:last-child {
@@ -1163,14 +1166,14 @@ p:last-child {
 		font-size: 16px;
 		padding: 16px 0;
 		display: block;
-		color: var(--color-bg-light);
+		color: var(--color-text);
 		text-decoration: none;
 		letter-spacing: 0.08em;
 		transition: opacity 0.2s ease;
 	}
 
 	.site-header .wp-block-navigation__responsive-container.is-menu-open a:hover {
-		opacity: 0.7;
+		opacity: 0.6;
 	}
 
 	/* Ornate panel */
@@ -1204,15 +1207,20 @@ p:last-child {
 
 	.site-header {
 		padding: 8px 0;
+		border-bottom: 1px solid rgba(74, 63, 53, 0.08);
 	}
 
 	.site-header .brand-lockup {
 		min-height: 40px;
+		display: flex;
+		align-items: center;
 	}
 
 	.site-header .brand-lockup img {
 		max-height: 40px;
+		height: auto;
 		width: auto;
+		object-fit: contain;
 	}
 
 	.site-header .wp-block-navigation {
