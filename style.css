@@ -8,7 +8,7 @@ Tags: block-patterns, block-styles, custom-colors, custom-logo, custom-menu, edi
 Requires at least: 6.7
 Tested up to: 6.7
 Requires PHP: 7.2
-Version: 1.0.16
+Version: 1.0.17
 License: GNU General Public License v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: rebecca-mercier-theme
@@ -232,7 +232,7 @@ p:last-child {
 	position: sticky;
 	top: 0;
 	z-index: 1000;
-	background: rgba(245, 241, 234, 0.95);
+	background: rgba(232, 222, 210, 0.98);
 	backdrop-filter: blur(20px);
 	-webkit-backdrop-filter: blur(20px);
 	border-bottom: 1px solid rgba(74, 63, 53, 0.08);
@@ -1075,13 +1075,33 @@ p:last-child {
 		padding: var(--space-section-mobile) var(--space-small);
 	}
 
-	/* Hero section */
+	/* Hero section - reduce padding on mobile */
 	.hero-parallax {
 		min-height: 70vh !important;
 	}
 
 	.hero-parallax .wp-block-cover__inner-container {
-		padding: var(--space-medium) !important;
+		padding: var(--space-small) !important;
+	}
+
+	.hero-parallax .wp-block-group {
+		padding-top: var(--space-small) !important;
+		padding-bottom: var(--space-small) !important;
+	}
+
+	/* Make hamburger menu more obvious */
+	.site-header .wp-block-navigation__responsive-container-open {
+		width: 48px;
+		height: 48px;
+		padding: 12px;
+		background: rgba(176, 116, 85, 0.15);
+		border-radius: 8px;
+		border: 2px solid rgba(176, 116, 85, 0.3);
+	}
+
+	.site-header .wp-block-navigation__responsive-container-open svg {
+		width: 24px;
+		height: 24px;
 	}
 
 	/* Ornate panel */
