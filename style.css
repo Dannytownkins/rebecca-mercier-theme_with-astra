@@ -8,7 +8,7 @@ Tags: block-patterns, block-styles, custom-colors, custom-logo, custom-menu, edi
 Requires at least: 6.7
 Tested up to: 6.7
 Requires PHP: 7.2
-Version: 1.0.17
+Version: 1.0.21
 License: GNU General Public License v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: rebecca-mercier-theme
@@ -58,7 +58,7 @@ Text Domain: rebecca-mercier-theme
 	--radius-pill: 999px;
 
 	/* Card System */
-	--card-padding: clamp(32px, 4vw, 40px);
+	--card-padding: clamp(36px, 4.5vw, 44px);
 	--card-border: 2px solid rgba(176, 116, 85, 0.2);
 	--card-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.12);
 	--card-shadow-hover: 0 20px 48px -16px rgba(0, 0, 0, 0.18);
@@ -289,7 +289,31 @@ p:last-child {
 }
 
 .site-header .wp-block-navigation__responsive-container.is-menu-open {
-	background: rgba(27, 21, 18, 0.95);
+	background: rgba(27, 21, 18, 0.98);
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 80vw;
+	max-width: 400px;
+	height: 100vh;
+	overflow-y: auto;
+	transform: translateX(0);
+	transition: transform 0.3s ease;
+	box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+	z-index: 9999;
+}
+
+/* Add backdrop overlay when menu is open */
+.site-header .wp-block-navigation__responsive-container.is-menu-open::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: -1;
 }
 
 .is-style-glass {
@@ -398,7 +422,7 @@ p:last-child {
 	letter-spacing: 0.4em;
 	text-transform: uppercase;
 	color: var(--color-text-soft);
-	margin-bottom: var(--space-small);
+	margin-bottom: var(--space-medium);
 	max-width: none;
 }
 
@@ -492,10 +516,6 @@ p:last-child {
 /* Tighten top padding to show Rebecca section sooner */
 .hero-parallax > .wp-block-group {
 	padding-bottom: var(--space-medium) !important;
-}
-
-[data-parallax] {
-	transform: none !important;
 }
 
 /* Card System - Perfect Symmetry
@@ -637,11 +657,13 @@ p:last-child {
 	grid-template-columns: repeat(2, 1fr);
 	gap: var(--space-medium);
 	margin-top: var(--space-medium);
+	align-items: stretch;
 }
 
 .testimonials-band .testimonial-card {
 	display: flex;
 	flex-direction: column;
+	height: 100%;
 	min-height: 320px;
 	position: relative;
 	padding: var(--card-padding);
@@ -1089,19 +1111,66 @@ p:last-child {
 		padding-bottom: var(--space-small) !important;
 	}
 
-	/* Make hamburger menu more obvious */
+	/* Make hamburger menu more obvious - add MENU text */
 	.site-header .wp-block-navigation__responsive-container-open {
-		width: 48px;
+		width: auto;
 		height: 48px;
-		padding: 12px;
+		padding: 12px 16px;
 		background: rgba(176, 116, 85, 0.15);
 		border-radius: 8px;
 		border: 2px solid rgba(176, 116, 85, 0.3);
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.site-header .wp-block-navigation__responsive-container-open::after {
+		content: 'MENU';
+		color: var(--color-text);
 	}
 
 	.site-header .wp-block-navigation__responsive-container-open svg {
-		width: 24px;
-		height: 24px;
+		width: 20px;
+		height: 20px;
+	}
+
+	/* Fix mobile menu drawer content */
+	.site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
+		padding: var(--space-large) var(--space-medium);
+		padding-top: 80px;
+	}
+
+	.site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-xs);
+	}
+
+	.site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item {
+		margin: 0;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item:last-child {
+		border-bottom: none;
+	}
+
+	.site-header .wp-block-navigation__responsive-container.is-menu-open a {
+		font-size: 16px;
+		padding: 16px 0;
+		display: block;
+		color: var(--color-bg-light);
+		text-decoration: none;
+		letter-spacing: 0.08em;
+		transition: opacity 0.2s ease;
+	}
+
+	.site-header .wp-block-navigation__responsive-container.is-menu-open a:hover {
+		opacity: 0.7;
 	}
 
 	/* Ornate panel */
@@ -1124,11 +1193,26 @@ p:last-child {
 		padding: var(--space-medium);
 	}
 
-	/* Header */
+	/* Header - keep horizontal on mobile */
 	.site-header .alignwide {
-		flex-direction: column;
-		gap: var(--space-xs);
-		padding: 12px 0;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		gap: var(--space-small);
+		padding: 8px 16px;
+	}
+
+	.site-header {
+		padding: 8px 0;
+	}
+
+	.site-header .brand-lockup {
+		min-height: 40px;
+	}
+
+	.site-header .brand-lockup img {
+		max-height: 40px;
+		width: auto;
 	}
 
 	.site-header .wp-block-navigation {
@@ -1200,10 +1284,6 @@ p:last-child {
 
 /* Motion safety */
 @media (prefers-reduced-motion: reduce) {
-	[data-parallax] {
-		transform: none !important;
-	}
-
 	.wp-block-button__link,
 	.pill-link,
 	.testimonial-card,
