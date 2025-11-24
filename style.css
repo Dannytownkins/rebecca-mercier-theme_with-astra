@@ -1197,3 +1197,17 @@ p:last-child {
 		transform: none;
 	}
 }
+
+/* Fix Practice Pillars and Mercier Therapy sections - force left alignment */
+.gradient-section-2 .wp-block-group.alignwide > p,
+.gradient-section-2 .wp-block-group.alignwide > h2,
+#mercier-therapy .wp-block-group.alignwide > p,
+#mercier-therapy .wp-block-group.alignwide > h2 {
+	text-align: left !important;
+	margin-left: 0 !important;
+	max-width: 100%;
+}
+
+#mercier-therapy .wp-block-columns .wp-block-column p {
+	text-align: left !important;
+}
