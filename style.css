@@ -168,7 +168,7 @@ p:last-child {
 	position: absolute;
 	inset: 0;
 	background: radial-gradient(circle at 20% 30%, rgba(110, 133, 117, 0.15), transparent 50%),
-	            radial-gradient(circle at 80% 70%, rgba(176, 116, 85, 0.12), transparent 50%);
+		radial-gradient(circle at 80% 70%, rgba(176, 116, 85, 0.12), transparent 50%);
 	pointer-events: none;
 }
 
@@ -222,7 +222,7 @@ p:last-child {
 	z-index: 2;
 }
 
-.gradient-overlay > * {
+.gradient-overlay>* {
 	position: relative;
 	z-index: 3;
 }
@@ -235,9 +235,9 @@ p:last-child {
 	background: rgba(232, 222, 210, 0.98);
 	backdrop-filter: blur(20px);
 	-webkit-backdrop-filter: blur(20px);
-	border-bottom: 1px solid rgba(74, 63, 53, 0.08);
-	transition: background 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
-	padding: 16px 0;
+	border-bottom: none;
+	transition: background 0.4s ease, box-shadow 0.4s ease;
+	padding: 10px 0;
 }
 
 .site-header .alignwide {
@@ -262,31 +262,11 @@ p:last-child {
 }
 
 .site-header[data-scrolled="true"] {
-	background: linear-gradient(135deg, rgba(74, 63, 53, 0.95) 0%, rgba(60, 50, 45, 0.95) 50%, rgba(50, 45, 42, 0.96) 100%);
-	color: var(--wp--preset--color--base);
-	box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.15);
-	border-bottom-color: rgba(255, 255, 255, 0.1);
+	background: rgba(232, 222, 210, 0.98);
+	box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.1);
 	position: relative;
 }
 
-.site-header[data-scrolled="true"]::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background: radial-gradient(ellipse at top right, rgba(110, 133, 117, 0.12), transparent 60%),
-	            radial-gradient(ellipse at bottom left, rgba(176, 116, 85, 0.1), transparent 60%);
-	pointer-events: none;
-	z-index: 0;
-}
-
-.site-header[data-scrolled="true"] > * {
-	position: relative;
-	z-index: 1;
-}
-
-.site-header[data-scrolled="true"] a {
-	color: var(--wp--preset--color--base);
-}
 
 .site-header .wp-block-navigation__responsive-container.is-menu-open {
 	background: rgba(232, 222, 210, 0.98);
@@ -390,7 +370,7 @@ p:last-child {
 	box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
 }
 
-/* Make pill-link white in hero */
+/* Make pill-link white in hero, dark on light backgrounds */
 .pill-link {
 	display: inline-flex;
 	align-items: center;
@@ -398,13 +378,19 @@ p:last-child {
 	font-size: 12px;
 	letter-spacing: 0.15em;
 	text-transform: uppercase;
-	color: rgba(255, 255, 255, 0.95);
+	color: var(--color-text);
 	opacity: 1;
 }
 
 .pill-link a {
-	color: rgba(255, 255, 255, 0.95);
+	color: var(--color-text);
 	text-decoration: none;
+}
+
+/* White pill links only in hero */
+.hero-parallax .pill-link,
+.hero-parallax .pill-link a {
+	color: rgba(255, 255, 255, 0.95);
 }
 
 .pill-link::after {
@@ -474,20 +460,20 @@ p:last-child {
 	overflow: visible;
 	border-radius: var(--radius-large);
 	padding: var(--space-large);
-	background: 
+	background:
 		linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 241, 234, 0.92) 50%, rgba(255, 255, 255, 0.95) 100%),
 		url('./assets/images/ornate-pattern.svg');
 	background-size: auto, 140px 140px;
 	background-position: center, center;
 	background-repeat: no-repeat, repeat;
 	background-blend-mode: normal, overlay;
-	box-shadow: 
+	box-shadow:
 		0 20px 60px -20px rgba(0, 0, 0, 0.2),
 		0 0 0 1px rgba(176, 116, 85, 0.1) inset,
 		inset 0 2px 0 rgba(255, 255, 255, 0.95),
 		inset 0 -2px 0 rgba(176, 116, 85, 0.2);
 	border: 2px solid rgba(176, 116, 85, 0.3);
-	margin-top: var(--space-medium);
+	margin-top: var(--space-small);
 }
 
 /* Top decorative accent */
@@ -502,7 +488,7 @@ p:last-child {
 	z-index: 2;
 }
 
-.ornate-panel > * {
+.ornate-panel>* {
 	position: relative;
 	z-index: 1;
 }
@@ -528,11 +514,11 @@ p:last-child {
 .hero-parallax .wp-block-cover__image-background {
 	object-fit: cover;
 	object-position: center;
-	filter: blur(1px);
+	filter: blur(3px) brightness(0.75);
 }
 
 /* Tighten top padding to show Rebecca section sooner */
-.hero-parallax > .wp-block-group {
+.hero-parallax>.wp-block-group {
 	padding-top: calc(var(--space-medium) * 0.95) !important;
 	padding-bottom: calc(var(--space-medium) * 0.95) !important;
 }
@@ -595,7 +581,7 @@ p:last-child {
 	box-shadow: var(--card-shadow-hover), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-.card-grid .card > * {
+.card-grid .card>* {
 	position: relative;
 	z-index: 2;
 }
@@ -641,7 +627,7 @@ p:last-child {
 
 .testimonials-band {
 	background: radial-gradient(ellipse at top, rgba(110, 133, 117, 0.25), transparent 50%),
-	            linear-gradient(160deg, var(--color-bg-dark-soft) 0%, var(--color-bg-dark) 100%);
+		linear-gradient(160deg, var(--color-bg-dark-soft) 0%, var(--color-bg-dark) 100%);
 	color: var(--color-bg-light);
 	padding: var(--space-section-desktop) var(--space-medium);
 	position: relative;
@@ -888,16 +874,17 @@ p:last-child {
 .gradient-frame {
 	position: relative;
 	border-radius: var(--radius-large);
-	padding: 8px;
-	background: linear-gradient(135deg, var(--color-accent-soft), var(--color-muted));
-	box-shadow: var(--card-shadow-hover);
+	/* Professional subtle shadow for depth */
+	box-shadow:
+		0 10px 40px -12px rgba(0, 0, 0, 0.25),
+		0 4px 12px -4px rgba(0, 0, 0, 0.12);
 	overflow: hidden;
 	max-width: 100%;
 }
 
 .gradient-frame img,
 .gradient-frame figure {
-	border-radius: calc(var(--radius-large) - 8px);
+	border-radius: calc(var(--radius-large) - 1px);
 	margin: 0;
 	display: block;
 	width: 100%;
@@ -910,17 +897,28 @@ p:last-child {
 	position: relative;
 	border-radius: var(--radius-medium);
 	overflow: hidden;
-	box-shadow: var(--card-shadow);
+	/* Subtle shadow and minimal border stroke */
+	box-shadow:
+		0 8px 24px -8px rgba(0, 0, 0, 0.15),
+		0 2px 8px -2px rgba(0, 0, 0, 0.08);
+	border: 0.5px solid rgba(0, 0, 0, 0.06);
 	max-width: 100%;
-	border: 3px solid rgba(176, 116, 85, 0.25);
 }
 
 .floating-image img {
 	display: block;
 	width: 100%;
 	height: auto;
+	margin: 0;
+	border-radius: var(--radius-medium);
 	object-fit: cover;
 }
+
+/* Hero Section - Subtle blur and darken background for depth */
+.hero-parallax .wp-block-cover__image-background {
+	filter: blur(2px) brightness(1.05);
+}
+
 
 .badge-list {
 	display: flex;
@@ -941,6 +939,33 @@ p:last-child {
 /* List Grid (for Mercier conditions card)
 ---------------------------------------- */
 
+.card-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: var(--space-medium);
+	align-items: stretch;
+	margin-top: var(--space-large);
+}
+
+/* Tablet: 2 cards per row */
+@media (max-width: 1024px) {
+	.card-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* Mobile: 1 card per row */
+@media (max-width: 600px) {
+	.card-grid {
+		grid-template-columns: 1fr;
+		gap: var(--space-small);
+	}
+
+	.card-grid .card {
+		min-height: auto;
+	}
+}
+
 .list-grid {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -948,14 +973,16 @@ p:last-child {
 	align-items: start;
 }
 
-.list-grid > * {
+.list-grid>* {
 	max-width: none;
+	margin-top: 0 !important;
 }
 
 .list-grid h4 {
 	font-size: var(--font-h4);
 	letter-spacing: 0.05em;
 	margin-bottom: var(--space-small);
+	margin-top: 0;
 	color: var(--color-text);
 }
 
@@ -1019,7 +1046,7 @@ p:last-child {
 	mix-blend-mode: screen;
 }
 
-.cta-panel > * {
+.cta-panel>* {
 	position: relative;
 	z-index: 1;
 }
@@ -1037,7 +1064,7 @@ p:last-child {
 
 .brand-lockup {
 	position: relative;
-	min-height: 56px;
+	min-height: 48px;
 }
 
 .brand-lockup .wp-block-group {
@@ -1097,6 +1124,7 @@ p:last-child {
 
 /* Tablet adjustments */
 @media (max-width: 1024px) {
+
 	.gradient-section-1,
 	.gradient-section-2,
 	.gradient-section-3 {
@@ -1104,12 +1132,13 @@ p:last-child {
 	}
 
 	.hero-parallax {
-		min-height: 65vh !important;
+		min-height: 58vh !important;
 	}
 }
 
 /* Mobile adjustments */
 @media (max-width: 782px) {
+
 	.gradient-section-1,
 	.gradient-section-2,
 	.gradient-section-3 {
@@ -1118,7 +1147,7 @@ p:last-child {
 
 	/* Hero section - reduce padding on mobile */
 	.hero-parallax {
-		min-height: 70vh !important;
+		min-height: 60vh !important;
 	}
 
 	.hero-parallax .wp-block-cover__inner-container {
@@ -1222,18 +1251,18 @@ p:last-child {
 	}
 
 	.site-header {
-		padding: 8px 0;
+		padding: 6px 0;
 		border-bottom: none;
 	}
 
 	.site-header .brand-lockup {
-		min-height: 40px;
+		min-height: 36px;
 		display: flex;
 		align-items: center;
 	}
 
 	.site-header .brand-lockup img {
-		max-height: 40px;
+		max-height: 36px;
 		height: auto;
 		width: auto;
 		object-fit: contain;
@@ -1267,11 +1296,11 @@ p:last-child {
 	/* Image frames */
 	.gradient-frame {
 		border-radius: var(--radius-medium);
-		padding: 6px;
+		padding: 1px;
 	}
 
 	.gradient-frame img {
-		border-radius: calc(var(--radius-medium) - 6px);
+		border-radius: calc(var(--radius-medium) - 1px);
 	}
 
 	.floating-image {
@@ -1291,9 +1320,10 @@ p:last-child {
 }
 
 @media (max-width: 600px) {
+
 	/* Extra small mobile adjustments */
 	.hero-parallax {
-		min-height: 75vh !important;
+		min-height: 62vh !important;
 	}
 
 	.section-caption {
@@ -1308,6 +1338,7 @@ p:last-child {
 
 /* Motion safety */
 @media (prefers-reduced-motion: reduce) {
+
 	.wp-block-button__link,
 	.pill-link,
 	.testimonial-card,
@@ -1323,10 +1354,10 @@ p:last-child {
 }
 
 /* Fix Practice Pillars and Mercier Therapy sections - force left alignment */
-.gradient-section-2 .wp-block-group.alignwide > p,
-.gradient-section-2 .wp-block-group.alignwide > h2,
-#mercier-therapy .wp-block-group.alignwide > p,
-#mercier-therapy .wp-block-group.alignwide > h2 {
+.gradient-section-2 .wp-block-group.alignwide>p,
+.gradient-section-2 .wp-block-group.alignwide>h2,
+#mercier-therapy .wp-block-group.alignwide>p,
+#mercier-therapy .wp-block-group.alignwide>h2 {
 	text-align: left !important;
 	margin-left: 0 !important;
 	max-width: 100%;
@@ -1334,4 +1365,51 @@ p:last-child {
 
 #mercier-therapy .wp-block-columns .wp-block-column p {
 	text-align: left !important;
+}
+
+/* About section - align image with text baseline on desktop */
+@media (min-width: 783px) {
+	#about .wp-block-columns {
+		align-items: flex-end;
+	}
+
+	/* Mercier text section - constrain image to match text height */
+	#mercier-therapy .wp-block-group>.wp-block-columns:has(.floating-image) {
+		display: grid !important;
+		grid-template-columns: 55fr 45fr;
+		gap: var(--wp--style--block-gap, 2em);
+		align-items: start;
+	}
+
+	#mercier-therapy .wp-block-group>.wp-block-columns:has(.floating-image) .wp-block-column {
+		min-height: 0;
+	}
+
+	/* Image column - force to match text column height */
+	#mercier-therapy .wp-block-group>.wp-block-columns:has(.floating-image) .wp-block-column:has(figure) {
+		display: flex;
+		height: 100%;
+	}
+
+	/* Image wrapper fills and clips */
+	#mercier-therapy .wp-block-group>.wp-block-columns:has(.floating-image) .floating-image {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		overflow: hidden;
+	}
+
+	/* Image fills and covers, clipping bottom */
+	#mercier-therapy .wp-block-group>.wp-block-columns:has(.floating-image) .floating-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center top;
+	}
+
+	/* Image styling */
+	#mercier-therapy .wp-block-group>.wp-block-columns:has(.floating-image) .wp-block-column:last-child img {
+		width: 100%;
+		border-radius: 8px;
+	}
 }
