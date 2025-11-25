@@ -91,7 +91,6 @@ body {
 	background-color: var(--color-bg-light);
 	background-image:
 		radial-gradient(circle at top left, rgba(199, 141, 107, 0.15), transparent 50%),
-		radial-gradient(circle at bottom right, rgba(110, 133, 117, 0.18), transparent 55%),
 		radial-gradient(circle at center, transparent 40%, rgba(74, 63, 53, 0.03) 100%);
 	position: relative;
 }
@@ -1163,10 +1162,10 @@ p:last-child {
 	.site-header .wp-block-navigation__responsive-container-open {
 		width: auto;
 		height: 48px;
-		padding: 12px 16px;
-		background: rgba(176, 116, 85, 0.15);
-		border-radius: 8px;
-		border: 2px solid rgba(176, 116, 85, 0.3);
+		padding: 8px 16px;
+		background: transparent;
+		border: 1px solid rgba(74, 63, 53, 0.2);
+		border-radius: 999px;
 		display: flex;
 		align-items: center;
 		gap: 8px;
@@ -1190,6 +1189,7 @@ p:last-child {
 	.site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
 		padding: var(--space-large) var(--space-medium);
 		padding-top: 80px;
+		background-color: var(--color-bg-dark);
 	}
 
 	.site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
@@ -1211,7 +1211,7 @@ p:last-child {
 		font-size: 16px;
 		padding: 16px 0;
 		display: block;
-		color: var(--color-text);
+		color: #ffffff;
 		text-decoration: none;
 		letter-spacing: 0.08em;
 		transition: opacity 0.2s ease;
@@ -1247,7 +1247,7 @@ p:last-child {
 		justify-content: space-between;
 		align-items: center;
 		gap: var(--space-small);
-		padding: 8px 16px;
+		padding: 8px 5px;
 	}
 
 	.site-header {
@@ -1262,7 +1262,7 @@ p:last-child {
 	}
 
 	.site-header .brand-lockup img {
-		max-height: 36px;
+		max-height: 50px;
 		height: auto;
 		width: auto;
 		object-fit: contain;
